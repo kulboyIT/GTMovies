@@ -4,24 +4,20 @@ const routes = new Router()
 
 const movies = [
   {
-    "id": 123,
+    "id": 1,
     "title": "O Protetor 1",
     "duration": "136 min",
     "url": "https://www.youtube.com/watch?v=WgpqBkFFUVQ&",
     "created_by": "Patryck Gratão"
   },
   {
-    "id": 122,
-    "title": "O Protetor 1",
-    "duration": "136 min",
+    "id": 2,
+    "title": "Os vingadores",
+    "duration": "120 min",
     "url": "https://www.youtube.com/watch?v=WgpqBkFFUVQ&",
     "created_by": "Patryck Gratão"
   }
-]
-
-routes.get('/', (req, res) => {
-  res.json({message: "Homepage"})
-})
+];
 
 // List all movies registered
 routes.get('/movies',(req, res) => {
@@ -44,6 +40,7 @@ routes.post('/movies', (req, res) => {
   res.json(newMovie);
 })
 
+// Update a movie
 routes.put('/movies/:id', (req, res) => {
   const { id } = req.params;
   const { title, duration, url, created_by } = req.body;
@@ -58,14 +55,14 @@ routes.put('/movies/:id', (req, res) => {
       if (created_by) currentMovie.created_by = created_by;
       
       movies[index] = currentMovie
+    } else {
+      res.status(400).send('This movie does not exists');
     }
   })
-  console.log(movies)
-  // console.log(currentMovie)
-
-  res.json('feito')
+  res.json(currentMovie)
 })
 
+// Delete a movie
 routes.delete('/movies/:id', (req, res) => {
   const { id } = req.params;
 
@@ -75,10 +72,22 @@ routes.delete('/movies/:id', (req, res) => {
     movies.splice(selectedMovie, 1)
   }
   else {
-    res.status(400).send('ID não encontrado');
+    res.status(400).send('This movie identifier does not exist');
   }
 
-  res.json(movies)
+  res.status(200).send('Movie was deleted')
+});
+
+routes.get('/movies/:id', (req, res) => {
+  const { id } = req.params;
+
+  const selectedMovie = movies.find(movie => movie.id == id);
+
+  if (!selectedMovie) {
+    res.status(400).send('This movie does not exist')
+  }
+  res.json(selectedMovie);
+
 })
 
 export default routes

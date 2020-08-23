@@ -9,7 +9,10 @@ import CardMovie from '../../components/CardMovie';
 import { bindActionCreators } from 'redux';
 import * as MoviesActions from '../../store/modules/movies/actions';
 
-function Home () {
+function Home ({
+  fetchMoviesRequest
+}) {
+  fetchMoviesRequest()
   return (
     <Container>
       <CardMovie title="Duro de Matar" picture="https://images-na.ssl-images-amazon.com/images/I/61uicc7gULL._AC_SX425_.jpg" gender="Ação" />

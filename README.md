@@ -22,7 +22,7 @@
 
 ## :rocket: Technologies
 
-This Movie Platform was builded using Javascipt at back-end and front-end using technologies like:
+This Movie Platform was builded using Javascipt at back-end and front-end and technologies like:
 
 -  [ReactJS](https://reactjs.org/)
 -  [Redux](https://redux.js.org/)
@@ -76,7 +76,7 @@ $ cd backend
 $ yarn install
 
 # Run backend
-$ yarn
+$ yarn dev
 
 ```
 

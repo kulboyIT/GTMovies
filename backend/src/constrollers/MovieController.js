@@ -18,7 +18,7 @@ module.exports = {
       movieCode,
     })
 
-    return response.json({ id })
+    return response.status(204).send()
   },
 
   async delete (request, response) {

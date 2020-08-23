@@ -7,11 +7,10 @@ import {
 } from './actions';
 
 import api from '../../../services/api';
-import store from '../../../store';
 
 function* fetchMoviesRequest() {
   try {
-   // Chamando API para consultar a quantidade de estoque
+   // Chamando API para pegar os todos os filmes
     const movies = yield call(api.get, `/movies/`);
 
     yield put(fetchMoviesSuccess(movies));
@@ -22,8 +21,27 @@ function* fetchMoviesRequest() {
   }
 }
 
+function* createNewMovieRequest(data) {
+  try {
+    const objectData = data.data
+    console.log(objectData)
+   // Chamando API para gravar novo filme
+    const response = yield call(api.post, `/movies/`, objectData);
+
+    if (response.status === 200) {
+      toast.success("Filme Cadastrado com Sucesso");
+      setTimeout(() => window.location.assign("/"), 1800);
+    }
+
+    
+  } catch (error) {
+    toast.error("Erro ao Cadastrar Filme. Tente Novamente")
+  }
+}
+
 export default all([
   // 1º parametro é qual ação queremos ouvir
   // 2º parametro é qual action queremos disparar
   takeLatest(actionNames.FETCH_MOVIES_REQUEST, fetchMoviesRequest),
+  takeLatest(actionNames.CREATE_NEW_MOVIE_REQUEST, createNewMovieRequest),
 ]);

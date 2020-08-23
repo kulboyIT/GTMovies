@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
-import uuid from 'uuid';
+import {v4 as uuidv4 } from 'uuid';
 
 import { Container, Form, Input, Select, Button } from './styles';
 
@@ -9,14 +9,23 @@ import { bindActionCreators } from 'redux';
 import * as MoviesActions from '../../store/modules/movies/actions';
 
 function NewMovie ({
-  movies,
+  createNewMovieRequest
 }) {
-
+  const id = uuidv4();
   const [title, setTitle] = useState('');
   const [gender, setGender] = useState('');
   const [picture, setPicture] = useState('');
   const [movieCode, setMovieCode] = useState('');
-  const [language, setLanguage] = useState('');
+  const [language, setLanguage] = useState('Dublado');
+
+  let newMovieObject = {
+    id,
+    title,
+    gender,
+    picture,
+    language,
+    movieCode,
+  }
 
   return (
     <Container>
@@ -26,6 +35,7 @@ function NewMovie ({
           placeholder="Nome do Filme" 
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          required
         />
 
         <Input 
@@ -54,19 +64,24 @@ function NewMovie ({
           <option value="Original">Legendado</option>
         </Select>
 
-        <Button>
+        <Button onClick={(e) => {
+          e.preventDefault();
+          if (title == '' || gender == '' || picture == '' || movieCode == '')  {
+            toast.error("Preencha todos os Campos!")
+            
+          } else {
+            createNewMovieRequest(newMovieObject)
+          }
+        }}>
           Cadastrar
         </Button>
       </Form>
     </Container>
-
   )
-
 }
 
 const mapStateToProps = (state, ownProps) => ({
   props: ownProps,
-  movies: state.movies?.movies,
 });
 
 const mapDispatchToProps = (dispatch) =>

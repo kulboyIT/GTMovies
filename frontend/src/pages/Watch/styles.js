@@ -9,6 +9,7 @@ export const Container = styled.header`
 export const MovieHeader = styled.h2`
   color: #f1f1f1;
   margin-bottom: 2rem;
+  text-transform: capitalize;
 `;
 
 export const EmbedContainer = styled.div`

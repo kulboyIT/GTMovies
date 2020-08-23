@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { Container } from './styles';
+import { Container, MenuContainer, MenuItem } from './styles';
 import logo from '../../assets/images/logo.svg';
 
 import { bindActionCreators } from 'redux';
@@ -15,6 +15,24 @@ function Header({fetchMoviesRequest}) {
       <Link to="/">
         <img src={logo} alt="GT Movies" />
       </Link>
+
+      <MenuContainer>
+        <MenuItem>
+          <Link to="/">Início</Link>
+        </MenuItem>
+
+        <MenuItem>
+          <Link to="/">Legendados</Link>
+        </MenuItem>
+
+        <MenuItem>
+          <Link to="/">Dublados</Link>
+        </MenuItem>
+
+        <MenuItem>
+          <Link to="/">Cadastrar Filme</Link>
+        </MenuItem>
+      </MenuContainer>
     </Container>
   )  
 }

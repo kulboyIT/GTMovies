@@ -16,8 +16,17 @@ export const CoverPicture = styled.img`
 
 export const MovieTitle = styled.h2`
   color: #f1f1f1;
+  text-transform: capitalize;
   `;
 
 export const MovieGender = styled.h3`
   color: #f1f1f1;
+  text-transform: capitalize;
+`;
+
+
+export const MovieLanguage = styled.h4`
+  color: #cc2222;
+  margin-top: 5px;
+  text-transform: capitalize;
 `;

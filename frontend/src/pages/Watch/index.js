@@ -15,7 +15,7 @@ function Watch ({match, movies}) {
     console.log(currentMovie)
     return (
       <Container>
-        <MovieHeader>{currentMovie.title} - {currentMovie.gender}</MovieHeader>
+        <MovieHeader>{currentMovie.title} - {currentMovie.gender} - {currentMovie.language}</MovieHeader>
         <EmbedContainer>
           <iframe src={`https://www.youtube.com/embed/${currentMovie.movieCode}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"/>
         </EmbedContainer>

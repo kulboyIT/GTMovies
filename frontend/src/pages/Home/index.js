@@ -24,6 +24,7 @@ function Home ({
                 title={movie.title}
                 picture={movie.picture} 
                 gender={movie.gender} 
+                language={movie.language}
               />
             </Link>
           ) 

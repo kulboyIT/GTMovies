@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { Container, CoverPicture, MovieTitle, MovieGender } from './styles';
+import { Container, CoverPicture, MovieTitle, MovieGender, MovieLanguage } from './styles';
 
 function CardMovie({props}) {
   return (
@@ -13,6 +13,9 @@ function CardMovie({props}) {
     <MovieGender>
       {props.gender}
     </MovieGender>
+    <MovieLanguage>
+      {props.language}
+    </MovieLanguage>
    </Container>
   )  
 }

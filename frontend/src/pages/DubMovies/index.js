@@ -9,23 +9,25 @@ import CardMovie from '../../components/CardMovie';
 import { bindActionCreators } from 'redux';
 import * as MoviesActions from '../../store/modules/movies/actions';
 
-function Home ({
+function DubMovies ({
   movies,
 }) {
   if (movies) {
     return (
       <Container>
         {movies.map(movie => {
-          return (
-            <Link to={`/watch/${movie.id}`}>
-              <CardMovie 
-                title={movie.title}
-                picture={movie.picture} 
-                gender={movie.gender} 
-                language={movie.language}
-              />
-            </Link>
-          ) 
+          if (movie.language === "Dublado" || movie.language === "dublado") {
+            return (
+              <Link to={`/watch/${movie.id}`}>
+                <CardMovie 
+                  title={movie.title}
+                  picture={movie.picture} 
+                  gender={movie.gender} 
+                  language={movie.language}
+                />
+              </Link>
+            ) 
+          }
         })}
       </Container>
     );
@@ -42,4 +44,4 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(MoviesActions, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(DubMovies);

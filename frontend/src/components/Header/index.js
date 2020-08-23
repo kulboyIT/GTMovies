@@ -22,11 +22,11 @@ function Header({fetchMoviesRequest}) {
         </MenuItem>
 
         <MenuItem>
-          <Link to="/">Legendados</Link>
+          <Link to="/original">Legendados</Link>
         </MenuItem>
 
         <MenuItem>
-          <Link to="/">Dublados</Link>
+          <Link to="/dub">Dublados</Link>
         </MenuItem>
 
         <MenuItem>

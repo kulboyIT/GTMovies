@@ -6,16 +6,18 @@ const movies = [
   {
     "id": 1,
     "title": "O Protetor 1",
-    "duration": "136 min",
-    "url": "https://www.youtube.com/watch?v=WgpqBkFFUVQ&",
-    "created_by": "Patryck Gratão"
+    "gender": "Ação",
+    "picutre": "",
+    "embedURL": "https://www.youtube.com/watch?v=WgpqBkFFUVQ&",
+    "created_by": "Patryck Gratão",
   },
   {
     "id": 2,
     "title": "Os vingadores",
-    "duration": "120 min",
-    "url": "https://www.youtube.com/watch?v=WgpqBkFFUVQ&",
-    "created_by": "Patryck Gratão"
+    "gender": "Ação",
+    "picutre": "",
+    "embedURL": "https://www.youtube.com/watch?v=WgpqBkFFUVQ&",
+    "created_by": "Patryck Gratão",
   }
 ];
 
@@ -26,13 +28,14 @@ routes.get('/movies',(req, res) => {
 
 // Create a new movie
 routes.post('/movies', (req, res) => {
-  const { id, title, duration, url, created_by } = req.body;
+  const { id, title, picture, gender, embedURL, created_by } = req.body;
 
   const newMovie = {
       id,
       title,
-      duration,
-      url,
+      gender,
+      picture,
+      embedURL,
       created_by,
   }
   movies.push(newMovie);
@@ -43,14 +46,15 @@ routes.post('/movies', (req, res) => {
 // Update a movie
 routes.put('/movies/:id', (req, res) => {
   const { id } = req.params;
-  const { title, duration, url, created_by } = req.body;
+  const { title, picture, gender, url, created_by } = req.body;
   let currentMovie;
 
   movies.map((movie, index) => {
     if (movie.id == id) {
       currentMovie = Object.assign({}, movie, {})
       if (title) currentMovie.title = title;
-      if (duration) currentMovie.duration = duration;
+      if (picture) currentMovie.picture = picture;
+      if (gender) currentMovie.gender = gender;
       if (url) currentMovie.url = url;
       if (created_by) currentMovie.created_by = created_by;
       

@@ -1,6 +1,7 @@
-import { put, all, takeLatest, select } from 'redux-saga/effects';
+import { put, all, takeLatest, call, select } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 import {
+  actionNames,
   fetchMoviesSuccess,
   fetchMoviesFailure,
 } from './actions';
@@ -25,5 +26,5 @@ function* fetchMoviesRequest() {
 export default all([
   // 1º parametro é qual ação queremos ouvir
   // 2º parametro é qual action queremos disparar
-  takeLatest(actionNames.OPEN_SOCKET_REQUEST, openSocketRequest),
+  takeLatest(actionNames.FETCH_MOVIES_REQUEST, fetchMoviesRequest),
 ]);

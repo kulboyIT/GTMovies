@@ -13,7 +13,7 @@ export default function movies(state = {}, action) {
     case actionNames.FETCH_MOVIES_REQUEST:
       console.log("Erro ao buscar filmes reducer")
       return {
-        error,
+        error: action.error,
       }
 
     default:

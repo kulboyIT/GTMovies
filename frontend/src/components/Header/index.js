@@ -2,15 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import {} from './styles';
+import { Container } from './styles';
 import logo from '../../assets/images/logo.svg';
 
 
 import { bindActionCreators } from 'redux';
-import * as ChatActions from '../../../../store/modules/chat/actions';
+import * as MoviesActions from '../../store/modules/movies/actions';
 
 function Header() {
-
+  return (
+    <Container>
+      <Link to="/">
+        <img src={logo} alt="GT Movies" />
+      </Link>
+    </Container>
+  )  
 }
 
 const mapStateToProps = (state, ownProps) => ({
@@ -18,6 +24,6 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators(ChatActions, dispatch);
+  bindActionCreators(MoviesActions, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Chat);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

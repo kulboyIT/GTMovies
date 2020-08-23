@@ -1,17 +1,16 @@
 import { actionNames } from './actions';
-import { toast } from 'react-toastify';
 
 export default function movies(state = {}, action) {
-
+  let movies;
   switch (action.type) {
 
     case actionNames.FETCH_MOVIES_SUCCESS:
+      movies = action.data.data;
       return {
-        movies: action.data,
+        movies,
       };
 
-    case actionNames.FETCH_MOVIES_REQUEST:
-      console.log("Erro ao buscar filmes reducer")
+    case actionNames.FETCH_MOVIES_FAILURE:
       return {
         error: action.error,
       }

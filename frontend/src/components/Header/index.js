@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 import { Container } from './styles';
 import logo from '../../assets/images/logo.svg';
 
-
 import { bindActionCreators } from 'redux';
 import * as MoviesActions from '../../store/modules/movies/actions';
 
-function Header() {
+function Header({fetchMoviesRequest}) {
+  fetchMoviesRequest()
   return (
     <Container>
       <Link to="/">

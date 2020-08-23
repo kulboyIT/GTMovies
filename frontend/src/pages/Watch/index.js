@@ -6,19 +6,30 @@ import { Container, MovieHeader, EmbedContainer, MovieEmbed } from './styles';
 import { bindActionCreators } from 'redux';
 import * as MoviesActions from '../../store/modules/movies/actions';
 
-function Watch () {
-  return (
-    <Container>
-      <MovieHeader>Bastardos Inglórios - Ação</MovieHeader>
-      <EmbedContainer>
-        <iframe src="https://www.youtube.com/embed/WgpqBkFFUVQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"/>
-      </EmbedContainer>
-    </Container>
-  );
+function Watch ({match, movies}) {
+  const movieParamsId = parseInt(match.params.movieId);
+
+  if (movies) {
+    const currentMovie = movies.find(movie => movie.id === movieParamsId);
+  
+    console.log(currentMovie)
+    return (
+      <Container>
+        <MovieHeader>{currentMovie.title} - {currentMovie.gender}</MovieHeader>
+        <EmbedContainer>
+          <iframe src={`https://www.youtube.com/embed/${currentMovie.movieCode}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"/>
+        </EmbedContainer>
+      </Container>
+    );
+  } else {
+    return <></>
+  }
+
 }
 
 const mapStateToProps = (state, ownProps) => ({
   props: ownProps,
+  movies: state.movies?.movies,
 });
 
 const mapDispatchToProps = (dispatch) =>

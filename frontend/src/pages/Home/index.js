@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Container } from './styles';
@@ -10,28 +10,34 @@ import { bindActionCreators } from 'redux';
 import * as MoviesActions from '../../store/modules/movies/actions';
 
 function Home ({
-  fetchMoviesRequest
+  movies,
 }) {
-  fetchMoviesRequest()
-  return (
-    <Container>
-      <CardMovie title="Duro de Matar" picture="https://images-na.ssl-images-amazon.com/images/I/61uicc7gULL._AC_SX425_.jpg" gender="Ação" />
-      <CardMovie title="Duro de Matar" picture="https://images-na.ssl-images-amazon.com/images/I/61uicc7gULL._AC_SX425_.jpg" gender="Ação" />
-      <CardMovie title="Duro de Matar" picture="https://images-na.ssl-images-amazon.com/images/I/61uicc7gULL._AC_SX425_.jpg" gender="Ação" />
+  console.log(movies)
 
-      <CardMovie title="Duro de Matar" picture="https://images-na.ssl-images-amazon.com/images/I/61uicc7gULL._AC_SX425_.jpg" gender="Ação" />
-      <CardMovie title="Duro de Matar" picture="https://images-na.ssl-images-amazon.com/images/I/61uicc7gULL._AC_SX425_.jpg" gender="Ação" />
-      <CardMovie title="Duro de Matar" picture="https://images-na.ssl-images-amazon.com/images/I/61uicc7gULL._AC_SX425_.jpg" gender="Ação" />
-
-      <CardMovie title="Duro de Matar" picture="https://images-na.ssl-images-amazon.com/images/I/61uicc7gULL._AC_SX425_.jpg" gender="Ação" />
-      <CardMovie title="Duro de Matar" picture="https://images-na.ssl-images-amazon.com/images/I/61uicc7gULL._AC_SX425_.jpg" gender="Ação" />
-      <CardMovie title="Duro de Matar" picture="https://images-na.ssl-images-amazon.com/images/I/61uicc7gULL._AC_SX425_.jpg" gender="Ação" />
-    </Container>
-  );
+  if (movies) {
+    return (
+      <Container>
+        {movies.map(movie => {
+          return (
+            <Link to={`/watch/${movie.id}`}>
+              <CardMovie 
+                title={movie.title}
+                picture={movie.picture} 
+                gender={movie.gender} 
+              />
+            </Link>
+          ) 
+        })}
+      </Container>
+    );
+  } else {
+    return <></>
+  }
 }
 
 const mapStateToProps = (state, ownProps) => ({
   props: ownProps,
+  movies: state.movies?.movies,
 });
 
 const mapDispatchToProps = (dispatch) =>

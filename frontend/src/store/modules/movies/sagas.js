@@ -1,4 +1,4 @@
-import { put, all, takeLatest, call, select } from 'redux-saga/effects';
+import { put, all, takeLatest, call } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 import {
   actionNames,
@@ -18,7 +18,6 @@ function* fetchMoviesRequest() {
   
     
   } catch (error) {
-    console.log("Erro ao Buscar Filmes", error);
     yield put(fetchMoviesFailure(error));
   }
 }

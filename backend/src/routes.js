@@ -18,6 +18,30 @@ const movies = [
     "picture": "https://br.web.img3.acsta.net/r_1280_720/medias/nmedia/18/89/43/82/20072617.jpg",
     "movieCode": `4qRrM9IqZR0`,
     "language": "dublado",
+  },
+  {
+    "id": 3,
+    "title": "Os vingadores",
+    "gender": "Ação",
+    "picture": "https://br.web.img3.acsta.net/r_1280_720/medias/nmedia/18/89/43/82/20072617.jpg",
+    "movieCode": `4qRrM9IqZR0`,
+    "language": "dublado",
+  },
+  {
+    "id": 4,
+    "title": "Os vingadores",
+    "gender": "Ação",
+    "picture": "https://br.web.img3.acsta.net/r_1280_720/medias/nmedia/18/89/43/82/20072617.jpg",
+    "movieCode": `4qRrM9IqZR0`,
+    "language": "dublado",
+  },
+  {
+    "id": 5,
+    "title": "Os vingadores",
+    "gender": "Ação",
+    "picture": "https://br.web.img3.acsta.net/r_1280_720/medias/nmedia/18/89/43/82/20072617.jpg",
+    "movieCode": `4qRrM9IqZR0`,
+    "language": "dublado",
   }
 ];
 
@@ -60,7 +84,7 @@ routes.put('/movies/:id', (req, res) => {
       
       movies[index] = currentMovie
     } else {
-      res.status(400).send('This movie does not exists');
+      // res.status(400).send('This movie does not exists');
     }
   })
   res.json(currentMovie)

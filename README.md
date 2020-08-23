@@ -93,10 +93,10 @@ $ yarn install
 $ yarn start
 ```
 
-### Well Done, now your app is ready to use.
+### Well Done, now your app is ready to use. Thanks to use!
 
 
-## :memo: Licença
+## :memo: License
 This project is under MIT license.
 
 ---

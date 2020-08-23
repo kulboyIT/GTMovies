@@ -1,13 +1,13 @@
-import { Router } from 'express'
+const express = require('express');
 
-const routes = new Router()
+const routes = express.Router();
 
 const movies = [
   {
     "id": 1,
-    "title": "O Protetor 1",
+    "title": "O Protetor 2",
     "gender": "Ação",
-    "picutre": "",
+    "picture": "",
     "embedURL": "https://www.youtube.com/watch?v=WgpqBkFFUVQ&",
     "created_by": "Patryck Gratão",
   },
@@ -15,7 +15,7 @@ const movies = [
     "id": 2,
     "title": "Os vingadores",
     "gender": "Ação",
-    "picutre": "",
+    "picture": "",
     "embedURL": "https://www.youtube.com/watch?v=WgpqBkFFUVQ&",
     "created_by": "Patryck Gratão",
   }
@@ -94,4 +94,4 @@ routes.get('/movies/:id', (req, res) => {
 
 })
 
-export default routes
+module.exports = routes;

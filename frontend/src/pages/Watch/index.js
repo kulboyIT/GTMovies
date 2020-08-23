@@ -14,13 +14,12 @@ function Watch ({match, movies, deleteMovieRequest}) {
 
   if (movies) {
     const currentMovie = movies.find(movie => movie.id == movieParamsId);
-  
     return (
       <Container>
         <MovieHeader>
           <h2>{currentMovie.title} - {currentMovie.gender} - {currentMovie?.language}</h2>
           <MovieActions>
-              <Link to="">
+              <Link to={`/updateMovie/${currentMovie.id}`}>
                 <FaEdit size={25} color={"#cc2222"} />
               </Link>
 

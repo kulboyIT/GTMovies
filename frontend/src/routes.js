@@ -6,6 +6,7 @@ import Watch from './pages/Watch';
 import DubMovies from './pages/DubMovies';
 import OriginalMovies from './pages/OriginalMovies';
 import NewMovie from './pages/NewMovie';
+import UpdateMovie from './pages/UpdateMovie';
 
 export default function Routes() {
   return (
@@ -15,6 +16,7 @@ export default function Routes() {
       <Route path="/dub/" component={DubMovies} />
       <Route path="/original/" component={OriginalMovies} />
       <Route path="/newMovie/" component={NewMovie} />
+      <Route path="/updateMovie/:movieId" component={UpdateMovie} />
     </Switch>
   )
 }

@@ -40,11 +40,29 @@ function* createNewMovieRequest(data) {
 function* deleteMovieRequest(data) {
   try {
     const movieId = data.id;
-   // Chamando API para excluir um filme
-    const response = yield call(api.delete, `/movies/${movieId}`);
-    
+    // Chamando API para excluir um filme
+    yield call(api.delete, `/movies/${movieId}`);
   } catch (error) {
-    console.log(error)
+    toast.error(error.message)
+  }
+}
+
+function* updateMovieRequest(data) {
+  try {
+    const movieId = data.id;
+    const changes = data.changes;
+    console.log(movieId)
+    console.log(changes)
+    // Chamando API para editar um filme
+    const response = yield call(api.put, `/movies/${movieId}`, changes);
+
+    console.log(response)
+
+    if (response.status === 200) {
+      toast.success("Informações atualizadas com Sucesso");
+      setTimeout(() => window.location.assign("/"), 1800);
+    }
+  } catch (error) {
     toast.error(error.message)
   }
 }
@@ -55,4 +73,5 @@ export default all([
   takeLatest(actionNames.FETCH_MOVIES_REQUEST, fetchMoviesRequest),
   takeLatest(actionNames.CREATE_NEW_MOVIE_REQUEST, createNewMovieRequest),
   takeLatest(actionNames.DELETE_MOVIE_REQUEST, deleteMovieRequest),
+  takeLatest(actionNames.UPDATE_MOVIE_REQUEST, updateMovieRequest),
 ]);

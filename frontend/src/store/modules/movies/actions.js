@@ -4,10 +4,8 @@ export const actionNames = {
   FETCH_MOVIES_FAILURE: '@movies/FETCH_MOVIES_FAILURE',
 
   CREATE_NEW_MOVIE_REQUEST: '@movies/CREATE_NEW_MOVIE_REQUEST',
-  CREATE_NEW_MOVIE_SUCCESS: '@movies/CREATE_NEW_MOVIE_SUCCESS',
-  CREATE_NEW_MOVIE_FAILURE: '@movies/CREATE_NEW_MOVIE_FAILURE',
-
   DELETE_MOVIE_REQUEST: '@movies/DELETE_MOVIE_REQUEST',
+  UPDATE_MOVIE_REQUEST: '@movies/UPDATE_MOVIE_REQUEST',
 }
 
 export function fetchMoviesRequest() {
@@ -39,5 +37,15 @@ export function deleteMovieRequest (id) {
   return {
     type: actionNames.DELETE_MOVIE_REQUEST,
     id,
+  };
+}
+
+export function updateMovieRequest (id, changes) {
+  console.log(id);
+  console.log(changes);
+  return {
+    type: actionNames.UPDATE_MOVIE_REQUEST,
+    id,
+    changes,
   };
 }

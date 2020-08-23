@@ -30,7 +30,7 @@ function Header({fetchMoviesRequest}) {
         </MenuItem>
 
         <MenuItem>
-          <Link to="/">Cadastrar Filme</Link>
+          <Link to="/newMovie">Cadastrar Filme</Link>
         </MenuItem>
       </MenuContainer>
     </Container>

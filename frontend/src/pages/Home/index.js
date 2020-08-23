@@ -17,8 +17,9 @@ function Home ({
       <Container>
         {movies.map(movie => {
           return (
-            <Link to={`/watch/${movie.id}`}>
+            <Link to={`/watch/${movie.id}`} key={movie.id}>
               <CardMovie 
+                
                 title={movie.title}
                 picture={movie.picture} 
                 gender={movie.gender} 

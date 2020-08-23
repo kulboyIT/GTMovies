@@ -27,7 +27,7 @@ function* createNewMovieRequest(data) {
    // Chamando API para gravar novo filme
     const response = yield call(api.post, `/movies/`, objectData);
 
-    if (response.status === 200) {
+    if (response.status === 204) {
       toast.success("Filme Cadastrado com Sucesso");
       setTimeout(() => window.location.assign("/"), 1800);
     }
@@ -58,7 +58,7 @@ function* updateMovieRequest(data) {
 
     console.log(response)
 
-    if (response.status === 200) {
+    if (response.status === 204) {
       toast.success("Informações atualizadas com Sucesso");
       setTimeout(() => window.location.assign("/"), 1800);
     }

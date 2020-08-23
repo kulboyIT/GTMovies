@@ -24,7 +24,6 @@ function* fetchMoviesRequest() {
 function* createNewMovieRequest(data) {
   try {
     const objectData = data.data
-    console.log(objectData)
    // Chamando API para gravar novo filme
     const response = yield call(api.post, `/movies/`, objectData);
 
@@ -32,10 +31,21 @@ function* createNewMovieRequest(data) {
       toast.success("Filme Cadastrado com Sucesso");
       setTimeout(() => window.location.assign("/"), 1800);
     }
-
-    
   } catch (error) {
     toast.error("Erro ao Cadastrar Filme. Tente Novamente")
+  }
+}
+
+
+function* deleteMovieRequest(data) {
+  try {
+    const movieId = data.id;
+   // Chamando API para excluir um filme
+    const response = yield call(api.delete, `/movies/${movieId}`);
+    
+  } catch (error) {
+    console.log(error)
+    toast.error(error.message)
   }
 }
 
@@ -44,4 +54,5 @@ export default all([
   // 2º parametro é qual action queremos disparar
   takeLatest(actionNames.FETCH_MOVIES_REQUEST, fetchMoviesRequest),
   takeLatest(actionNames.CREATE_NEW_MOVIE_REQUEST, createNewMovieRequest),
+  takeLatest(actionNames.DELETE_MOVIE_REQUEST, deleteMovieRequest),
 ]);

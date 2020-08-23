@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-icons": "^3.11.0",
+    "sweetalert": "^2.1.2"
+  }
+}

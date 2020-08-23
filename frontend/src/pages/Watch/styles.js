@@ -6,10 +6,23 @@ export const Container = styled.header`
   flex: 1;
 `;
 
-export const MovieHeader = styled.h2`
+export const MovieHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   color: #f1f1f1;
   margin-bottom: 2rem;
   text-transform: capitalize;
+`;
+
+export const MovieActions = styled.div`
+  display: flex;
+  align-items: center;
+
+  & svg {
+    margin-right: 30px; 
+    cursor: pointer;
+  }
 `;
 
 export const EmbedContainer = styled.div`

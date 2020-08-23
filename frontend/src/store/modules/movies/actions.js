@@ -6,6 +6,8 @@ export const actionNames = {
   CREATE_NEW_MOVIE_REQUEST: '@movies/CREATE_NEW_MOVIE_REQUEST',
   CREATE_NEW_MOVIE_SUCCESS: '@movies/CREATE_NEW_MOVIE_SUCCESS',
   CREATE_NEW_MOVIE_FAILURE: '@movies/CREATE_NEW_MOVIE_FAILURE',
+
+  DELETE_MOVIE_REQUEST: '@movies/DELETE_MOVIE_REQUEST',
 }
 
 export function fetchMoviesRequest() {
@@ -30,5 +32,12 @@ export function createNewMovieRequest(data) {
   return {
     type: actionNames.CREATE_NEW_MOVIE_REQUEST,
     data,
+  };
+}
+
+export function deleteMovieRequest (id) {
+  return {
+    type: actionNames.DELETE_MOVIE_REQUEST,
+    id,
   };
 }
